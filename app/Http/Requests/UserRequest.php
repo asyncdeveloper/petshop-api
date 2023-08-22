@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UserRequest extends FormRequest
 {
@@ -24,11 +25,17 @@ class UserRequest extends FormRequest
     {
         $routeName = $this->route()->getName();
 
-        if ($routeName === 'register') {
+        if (in_array($routeName, ['register', 'edit'])) {
             return [
                 'first_name' => 'required|string|min:3|max:255',
                 'last_name' => 'required|string|min:3|max:255',
-                'email' => 'required|string|email|unique:users',
+                'email' => [
+                    'required',
+                    'string',
+                    'email',
+                    'max:255',
+                    Rule::unique('users')->ignore($this->user()->id),
+                ],
                 'password' => 'required|string|confirmed|min:6',
                 'password_confirmation' => 'required|string|min:3|max:255',
                 'avatar' => 'nullable|string|max:255',

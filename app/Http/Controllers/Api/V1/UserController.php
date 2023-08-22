@@ -42,6 +42,13 @@ class UserController extends Controller
         return $this->success(['user' => auth()->user()]);
     }
 
+    public function edit(UserRequest $userRequest): JsonResponse
+    {
+        $user = $this->userService->editUser(auth()->user(), $userRequest->validated());
+
+        return $this->success(['user' => $user]);
+    }
+
     public function logout(): JsonResponse
     {
         $this->userService->logoutUser();

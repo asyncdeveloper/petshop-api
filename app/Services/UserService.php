@@ -39,6 +39,13 @@ class UserService
         ];
     }
 
+    public function editUser(Model $user, $attributes): Model
+    {
+        $this->userRepo->update($attributes, $user->id);
+
+        return $this->userRepo->findOrFail($user->id);
+    }
+
     public function logoutUser(): void
     {
         auth()->logout();
