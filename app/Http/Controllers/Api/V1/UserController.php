@@ -56,4 +56,11 @@ class UserController extends Controller
         return $this->success(null, 204);
     }
 
+    public function delete(): JsonResponse
+    {
+        $this->userService->deleteUser();
+
+        return $this->success(null, 204);
+    }
+
 }

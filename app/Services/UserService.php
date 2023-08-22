@@ -3,13 +3,11 @@
 namespace App\Services;
 
 use App\Repositories\UserRepository;
-use App\Traits\ResponseData;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Database\Eloquent\Model;
 
 class UserService
 {
-    use ResponseData;
 
     private UserRepository $userRepo;
 
@@ -48,6 +46,11 @@ class UserService
         $this->userRepo->update($attributes, $user->id);
 
         return $this->userRepo->findOrFail($user->id);
+    }
+
+    public function deleteUser(): void
+    {
+        $this->userRepo->delete(auth()->user()->id);
     }
 
     public function logoutUser(): void
