@@ -30,6 +30,15 @@ class PasswordResetRequest extends FormRequest
             ];
         }
 
+        if ($routeName === 'reset-password-token') {
+            return [
+                'token' => 'required|string',
+                'email' => 'required|string|email',
+                'password' => 'required|string|confirmed|min:8|max:255',
+                'password_confirmation' => 'required|string|min:8|max:255',
+            ];
+        }
+
         return [];
     }
 }
