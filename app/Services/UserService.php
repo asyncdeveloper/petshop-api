@@ -31,11 +31,15 @@ class UserService
             throw new AuthenticationException('Unauthorized');
         }
 
+        $user = auth()->user();
+
+        $this->userRepo->update(['last_login_at' => now()], $user->id);
+
         return [
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth()->factory()->getTTL() * 60,
-            'user' => auth()->user(),
+            'user' => $this->userRepo->findOrFail($user->id),
         ];
     }
 
