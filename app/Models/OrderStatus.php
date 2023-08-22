@@ -10,4 +10,6 @@ class OrderStatus extends Model
 {
     use HasFactory;
     use UUID;
+
+    protected $fillable = ['title'];
 }
