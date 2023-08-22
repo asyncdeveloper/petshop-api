@@ -11,14 +11,7 @@ class OrderStatus extends Seeder
      */
     public function run(): void
     {
-        $statuses = [
-            'open',
-            'pending',
-            'payment',
-            'paid',
-            'shipped',
-            'cancelled',
-        ];
+        $statuses = config('constants.order_statuses');
 
         collect($statuses)->each(function ($orderStatus) {
             \App\Models\OrderStatus::firstOrCreate(['title' => $orderStatus]);
