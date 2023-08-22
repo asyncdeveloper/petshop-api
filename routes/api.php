@@ -28,6 +28,7 @@ Route::group(['namespace' => 'Api', 'prefix' => 'v1'], function () {
             Route::get('logout', [UserController::class, 'logout'])->name('logout');
             Route::put('edit', [UserController::class, 'edit'])->name('edit');
             Route::delete('delete', [UserController::class, 'delete'])->name('delete');
+            Route::get('orders', [UserController::class, 'orders'])->name('orders');
         });
     });
 });
