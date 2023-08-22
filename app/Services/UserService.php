@@ -38,4 +38,9 @@ class UserService
             'user' => auth()->user(),
         ];
     }
+
+    public function logoutUser(): void
+    {
+        auth()->logout();
+    }
 }
