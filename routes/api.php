@@ -20,6 +20,7 @@ Route::group(['namespace' => 'Api', 'prefix' => 'v1'], function () {
         Route::post('login', [UserController::class, 'login'])->name('login');
 
         Route::group(['middleware' => 'auth.jwt'], function () {
+            Route::get('/', [UserController::class, 'user'])->name('user');
             Route::get('logout', [UserController::class, 'logout'])->name('logout');
         });
     });

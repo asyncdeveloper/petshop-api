@@ -37,6 +37,11 @@ class UserController extends Controller
         return $this->success($data);
     }
 
+    public function user(): JsonResponse
+    {
+        return $this->success(['user' => auth()->user()]);
+    }
+
     public function logout(): JsonResponse
     {
         $this->userService->logoutUser();
