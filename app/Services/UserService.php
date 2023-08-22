@@ -55,9 +55,9 @@ class UserService
         $this->userRepo->delete(auth()->user()->id);
     }
 
-    public function resetPassword($data): array
+    public function generatePasswordToken($email): array
     {
-        $user = $this->userRepo->find($data)->first();
+        $user = $this->userRepo->find(['email' => $email])->first();
 
         if (!$user) {
             throw ValidationException::withMessages(['email' => 'Invalid email']);
@@ -66,6 +66,20 @@ class UserService
         $token = Password::broker()->createToken($user);
 
         return ['token' => $token];
+    }
+
+    public function resetPassword($data): Model
+    {
+        $status = Password::reset($data, function ($user, $password) {
+            $user->password = $password;
+            $user->save();
+        });
+
+        if ($status == Password::INVALID_TOKEN) {
+            throw ValidationException::withMessages(['token' => 'Invalid token provided']);
+        }
+
+        return $this->userRepo->find(['email' => $data['email']])->first();
     }
 
     public function logoutUser(): void

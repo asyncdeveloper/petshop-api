@@ -54,9 +54,18 @@ class UserController extends Controller
     {
         $data = $request->validated();
 
-        $token = $this->userService->resetPassword($data);
+        $token = $this->userService->generatePasswordToken($data['email']);
 
         return $this->success($token);
+    }
+
+    public function resetPasswordToken(PasswordResetRequest $request): JsonResponse
+    {
+        $data = $request->validated();
+
+        $user = $this->userService->resetPassword($data);
+
+        return $this->success($user);
     }
 
     public function logout(): JsonResponse
