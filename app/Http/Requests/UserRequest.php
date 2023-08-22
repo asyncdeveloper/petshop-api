@@ -38,6 +38,13 @@ class UserRequest extends FormRequest
             ];
         }
 
+        if ($routeName === 'login') {
+            return [
+                'email' => 'required|string|email',
+                'password' => 'required|string',
+            ];
+        }
+
         return [];
     }
 

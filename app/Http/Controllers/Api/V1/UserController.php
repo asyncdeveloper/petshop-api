@@ -28,4 +28,13 @@ class UserController extends Controller
         return $this->success($data, 201);
     }
 
+    public function login(UserRequest $request): JsonResponse
+    {
+        $credentials = $request->validated();
+
+        $data = $this->userService->loginUser($credentials);
+
+        return $this->success($data);
+    }
+
 }

@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['namespace' => 'Api', 'prefix' => 'v1'], function () {
     Route::group(['prefix' => 'user'], function () {
         Route::post('create', [UserController::class, 'register'])->name('register');
+        Route::post('login', [UserController::class, 'login'])->name('login');
     });
 });
 
