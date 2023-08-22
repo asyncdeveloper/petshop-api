@@ -12,6 +12,10 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(5)->create();
+        User::factory(3)->create();
+
+        if (is_null(User::where(['email' => 'admin@buckhill.co.uk'])->first())) {
+            User::factory()->defaultAdmin()->create();
+        }
     }
 }

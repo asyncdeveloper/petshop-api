@@ -43,10 +43,12 @@ class UserFactory extends Factory
         ]);
     }
 
-    public function isAdmin(): static
+    public function defaultAdmin(): static
     {
         return $this->state(fn(array $attributes) => [
             'is_admin' => true,
+            'email' => 'admin@buckhill.co.uk',
+            'password' => '$2a$12$HeTHsyGDAn.5ll4JcP/5NOQpn3stSf4dug82dxPgJGd6BvIJm/Rvq', // admin
         ]);
     }
 
