@@ -20,5 +20,7 @@ down:
 	docker compose down --remove-orphans
 migrate:
 	docker compose exec app php artisan migrate
+run-tests:
+	docker compose exec app composer test
 setup-env:
 	if ! [ -f .env ];then cp .env.example .env; fi
