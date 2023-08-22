@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PasswordResetRequest;
 use App\Http\Requests\UserRequest;
 use App\Services\UserService;
 use App\Traits\ResponseData;
@@ -47,6 +48,15 @@ class UserController extends Controller
         $user = $this->userService->editUser(auth()->user(), $userRequest->validated());
 
         return $this->success(['user' => $user]);
+    }
+
+    public function forgotPassword(PasswordResetRequest $request): JsonResponse
+    {
+        $data = $request->validated();
+
+        $token = $this->userService->resetPassword($data);
+
+        return $this->success($token);
     }
 
     public function logout(): JsonResponse

@@ -9,6 +9,8 @@ interface CRUDRepositoryInterface
 {
     public function findAll(): Collection;
 
+    public function find($attributes): Collection;
+
     public function findOrFail(int $id): Model;
 
     public function store(array $data): Model;

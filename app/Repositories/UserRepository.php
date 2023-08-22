@@ -14,6 +14,11 @@ class UserRepository implements CRUDRepositoryInterface
         return User::all();
     }
 
+    public function find($attributes): Collection
+    {
+        return User::query()->where($attributes)->get();
+    }
+
     public function store(array $data): Model
     {
         return User::query()->create($data);

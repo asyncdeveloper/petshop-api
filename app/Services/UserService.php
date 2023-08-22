@@ -5,6 +5,8 @@ namespace App\Services;
 use App\Repositories\UserRepository;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Password;
+use Illuminate\Validation\ValidationException;
 
 class UserService
 {
@@ -51,6 +53,19 @@ class UserService
     public function deleteUser(): void
     {
         $this->userRepo->delete(auth()->user()->id);
+    }
+
+    public function resetPassword($data): array
+    {
+        $user = $this->userRepo->find($data)->first();
+
+        if (!$user) {
+            throw ValidationException::withMessages(['email' => 'Invalid email']);
+        }
+
+        $token = Password::broker()->createToken($user);
+
+        return ['token' => $token];
     }
 
     public function logoutUser(): void
