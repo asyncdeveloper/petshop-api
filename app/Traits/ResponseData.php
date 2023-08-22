@@ -6,12 +6,17 @@ use Illuminate\Http\JsonResponse;
 
 trait ResponseData
 {
-    protected function success($data = [], $status = 200): JsonResponse
+    protected function success($data = [], $status = 200, $meta = []): JsonResponse
     {
-        return response()->json([
+        $dataBody = [
             'success' => true,
             'data' => $data,
-        ], $status);
+        ];
+
+        if (!empty($meta)) {
+            $dataBody = array_merge($dataBody, $meta);
+        }
+        return response()->json($dataBody, $status);
     }
 
 }

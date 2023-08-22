@@ -5,13 +5,12 @@ namespace App\Http\Controllers\Api\V1;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PasswordResetRequest;
 use App\Http\Requests\UserRequest;
-use App\Http\Resources\OrderResource;
 use App\Models\Order;
 use App\Services\UserService;
 use App\Traits\ResponseData;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use Illuminate\Support\Arr;
 
 class UserController extends Controller
 {
@@ -72,13 +71,21 @@ class UserController extends Controller
         return $this->success($user);
     }
 
-    public function orders(Request $request): AnonymousResourceCollection
+    public function orders(Request $request): JsonResponse
     {
         $filteredOrder = Order::with(['user', 'orderStatus', 'payment'])->where('user_id', auth()->user()->id)->filter(
             );
 
-        return OrderResource::collection(
-            $filteredOrder->simplePaginate((int)$request->limit)
+        $paginatedData = $filteredOrder->simplePaginate(
+            (int)$request->limit
+        )->toArray();
+
+        return $this->success(
+            $paginatedData['data'],
+            200,
+            Arr::except($paginatedData, [
+                'data'
+            ])
         );
     }
 
