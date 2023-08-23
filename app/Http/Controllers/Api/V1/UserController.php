@@ -240,8 +240,8 @@ class UserController extends Controller
 
     /**
      * @OA\Get(
-     *      path="/api/v1/users/order",
-     *      operationId="getUserOrder",
+     *      path="/api/v1/user/orders",
+     *      operationId="getUserOrders",
      *      tags={"User"},
      *      summary="Get all user orders",
      *      security={{"bearer_token":{}}},
