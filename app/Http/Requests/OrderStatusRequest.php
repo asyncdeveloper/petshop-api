@@ -4,9 +4,28 @@ namespace App\Http\Requests;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
+use OpenApi\Annotations as OA;
 
+/**
+ * @OA\Schema(
+ *      title="OrderStatusRequest",
+ *      description="create order status data",
+ *      type="object",
+ *      required={"title"}
+ * )
+ */
 class OrderStatusRequest extends FormRequest
 {
+    /**
+     * @var string
+     * @OA\Property(
+     *      title="title",
+     *      description="title",
+     *      example="open"
+     * )
+     */
+    public string $title;
+
     /**
      * Determine if the user is authorized to make this request.
      */
