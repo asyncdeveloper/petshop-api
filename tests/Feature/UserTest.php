@@ -47,10 +47,8 @@ class UserTest extends TestCase
                 'success',
                 'data' => [
                     'access_token',
-                    'user' => [
-                        'id',
-                        'uuid'
-                    ]
+                    'id',
+                    'uuid'
                 ]
             ]);
     }
@@ -73,14 +71,12 @@ class UserTest extends TestCase
         $response->assertSuccessful()->assertJsonStructure([
                 'success',
                 'data' => [
-                    'user' => [
-                        'id',
-                        'uuid'
-                    ]
+                    'id',
+                    'uuid'
                 ]
             ]);
 
-        $this->assertSame($response->json()['data']['user']['id'], $user->id);
+        $this->assertSame($response->json()['data']['id'], $user->id);
     }
 
     /**

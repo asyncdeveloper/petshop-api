@@ -75,7 +75,7 @@ class OrderStatusController extends Controller
      *              )
      *         )
      *      ),
-     *      @OA\Response(response=401,description="Unauthorized"),
+     *      @OA\Response(response=401,description="Unauthourized"),
      *      @OA\Response(response=422,description="Validation Error")
      *  )
      */
@@ -110,7 +110,7 @@ class OrderStatusController extends Controller
      *              @OA\Property(property="success", type="boolean", example=true),
      *              @OA\Property(
      *                  property="data",
-     *                  ref="#/components/schemas/OrderStatus")
+     *                  ref="#/components/schemas/OrderStatus"
      *              )
      *         )
      *      ),
@@ -151,10 +151,11 @@ class OrderStatusController extends Controller
      *              @OA\Property(property="success", type="boolean"),
      *              @OA\Property(
      *                  property="data",
-     *                  ref="#/components/schemas/OrderStatus")
+     *                  ref="#/components/schemas/OrderStatus"
      *              )
      *         )
      *      ),
+     *      @OA\Response(response=401,description="Unauthourized"),
      *      @OA\Response(response=422,description="Validation Error")
      *  )
      */
@@ -183,7 +184,7 @@ class OrderStatusController extends Controller
      *          response=204,
      *          description="OK"
      *      ),
-     *      @OA\Response(response=401,description="Unauthorized")
+     *      @OA\Response(response=401,description="Unauthourized")
      *  )
      */
     public function delete(string $uuid): JsonResponse

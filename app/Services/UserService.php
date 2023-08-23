@@ -35,12 +35,11 @@ class UserService
 
         $this->userRepo->update(['last_login_at' => now()], $user->id);
 
-        return [
+        return array_merge([
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth()->factory()->getTTL() * 60,
-            'user' => $this->userRepo->findOrFail($user->id),
-        ];
+        ], $this->userRepo->findOrFail($user->id)->toArray());
     }
 
     public function editUser(Model $user, $attributes): Model
@@ -70,6 +69,14 @@ class UserService
 
     public function resetPassword($data): Model
     {
+        $email = $data['email'];
+
+        $user = $this->userRepo->find(['email' => $email])->first();
+
+        if (!$user) {
+            throw ValidationException::withMessages(['email' => 'Invalid email']);
+        }
+
         $status = Password::reset($data, function ($user, $password) {
             $user->password = $password;
             $user->save();
@@ -79,7 +86,7 @@ class UserService
             throw ValidationException::withMessages(['token' => 'Invalid token provided']);
         }
 
-        return $this->userRepo->find(['email' => $data['email']])->first();
+        return $this->userRepo->find(['email' => $email ])->first();
     }
 
     public function logoutUser(): void

@@ -8,7 +8,15 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use OpenApi\Annotations as OA;
 
+/**
+ * @OA\Schema(
+ *     description="Order model",
+ *     type="object",
+ *     title="Order"
+ * )
+ */
 class Order extends Model
 {
     use HasFactory;
