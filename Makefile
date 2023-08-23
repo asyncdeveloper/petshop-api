@@ -22,5 +22,7 @@ migrate:
 	docker compose exec app php artisan migrate
 run-tests:
 	docker compose exec app composer test
+php-insights:
+	docker compose exec app php artisan insights
 setup-env:
 	if ! [ -f .env ];then cp .env.example .env; fi

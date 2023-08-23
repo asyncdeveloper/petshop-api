@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\User;
 use App\Repositories\UserRepository;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Password;
@@ -41,8 +42,12 @@ class UserService
         ], $this->userRepo->findOrFail($user->id)->toArray());
     }
 
-    public function editUser(Model $user, $attributes): Model
+    public function editUser(User|null $user, $attributes): Model
     {
+        if(!$user) {
+            throw new AuthenticationException('Unauthorized');
+        }
+
         $this->userRepo->update($attributes, $user->id);
 
         return $this->userRepo->findOrFail($user->id);
