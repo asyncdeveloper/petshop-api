@@ -15,10 +15,15 @@ trait Filterable
 
     private function applyDecoratorsFromRequest(Request $request, Builder $query): Builder
     {
-        $asc = $request->get('desc', false);
+        $direction = 'asc';
+
+        if($request->has('desc')) {
+            $desc = $request->get('desc');
+            $direction = $desc === "true" ? 'desc': 'asc';
+        }
 
         if ($request->has('sortBy')) {
-            $query->orderBy($request->get('sortBy'), $asc ? 'asc' : 'desc');
+            $query->orderBy($request->get('sortBy'), $direction);
         }
 
         return $query;
