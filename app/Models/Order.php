@@ -19,6 +19,20 @@ use OpenApi\Annotations as OA;
  */
 class Order extends Model
 {
+    /**
+     * @OA\Property(property="id", type="string", example="1")
+     * @OA\Property(property="uuid", type="string", example="550e8400-e29b-41d4-a716-446655440000")
+     * @OA\Property(property="user_id", type="string", example="1")
+     * @OA\Property(property="order_status_id", type="string", example="1")
+     * @OA\Property(property="products", type="json")
+     * @OA\Property(property="address", type="json")
+     * @OA\Property(property="delivery_fee", type="number")
+     * @OA\Property(property="json", type="number")
+     * @OA\Property(property="created_at", type="string", format="datetime")
+     * @OA\Property(property="updated_at", type="string", format="datetime")
+     * @OA\Property(property="shipped_at", type="string", format="datetime")
+     */
+
     use HasFactory;
     use UUID;
     use Filterable;

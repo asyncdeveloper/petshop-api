@@ -800,6 +800,48 @@
             "Order": {
                 "title": "Order",
                 "description": "Order model",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "example": "1"
+                    },
+                    "uuid": {
+                        "type": "string",
+                        "example": "550e8400-e29b-41d4-a716-446655440000"
+                    },
+                    "user_id": {
+                        "type": "string",
+                        "example": "1"
+                    },
+                    "order_status_id": {
+                        "type": "string",
+                        "example": "1"
+                    },
+                    "products": {
+                        "type": "json"
+                    },
+                    "address": {
+                        "type": "json"
+                    },
+                    "delivery_fee": {
+                        "type": "number"
+                    },
+                    "json": {
+                        "type": "number"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "datetime"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "datetime"
+                    },
+                    "shipped_at": {
+                        "type": "string",
+                        "format": "datetime"
+                    }
+                },
                 "type": "object"
             },
             "OrderStatus": {
