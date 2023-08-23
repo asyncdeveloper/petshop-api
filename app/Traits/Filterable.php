@@ -2,12 +2,11 @@
 
 namespace App\Traits;
 
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Builder;
 
 trait Filterable
 {
-
     public function apply(Builder $builder): Builder
     {
         return $this->applyDecoratorsFromRequest(request(), $builder);
@@ -17,9 +16,9 @@ trait Filterable
     {
         $direction = 'asc';
 
-        if($request->has('desc')) {
+        if ($request->has('desc')) {
             $desc = $request->get('desc');
-            $direction = $desc === "true" ? 'desc': 'asc';
+            $direction = $desc === "true" ? 'desc' : 'asc';
         }
 
         if ($request->has('sortBy')) {
@@ -28,5 +27,4 @@ trait Filterable
 
         return $query;
     }
-
 }

@@ -3,14 +3,13 @@
 namespace App\Services;
 
 use App\Repositories\UserRepository;
-use Illuminate\Auth\AuthenticationException;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Password;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Validation\ValidationException;
 
 class UserService
 {
-
     private UserRepository $userRepo;
 
     public function __construct(UserRepository $userRepository)
@@ -77,12 +76,12 @@ class UserService
             throw ValidationException::withMessages(['email' => 'Invalid email']);
         }
 
-        $status = Password::reset($data, function ($user, $password) {
+        $status = Password::reset($data, function ($user, $password): void {
             $user->password = $password;
             $user->save();
         });
 
-        if ($status == Password::INVALID_TOKEN) {
+        if ($status === Password::INVALID_TOKEN) {
             throw ValidationException::withMessages(['token' => 'Invalid token provided']);
         }
 

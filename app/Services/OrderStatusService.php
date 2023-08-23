@@ -2,14 +2,13 @@
 
 namespace App\Services;
 
-use App\Repositories\OrderStatusRepository;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
+use Illuminate\Database\Eloquent\Model;
+use App\Repositories\OrderStatusRepository;
 use Illuminate\Validation\ValidationException;
 
 class OrderStatusService
 {
-
     private OrderStatusRepository $orderStatusRepository;
 
     public function __construct(OrderStatusRepository $orderStatusRepository)
@@ -19,7 +18,7 @@ class OrderStatusService
 
     public function getAllOrderStatus(): array
     {
-        $filteredOrder =  $this->orderStatusRepository->query()->filter();
+        $filteredOrder = $this->orderStatusRepository->query()->filter();
 
         $paginatedData = $filteredOrder->simplePaginate(
             (int) request()->limit
@@ -28,8 +27,8 @@ class OrderStatusService
         return [
             'data' => $paginatedData['data'],
             'meta' => Arr::except($paginatedData, [
-                'data'
-            ])
+                'data',
+            ]),
         ];
     }
 
@@ -72,5 +71,4 @@ class OrderStatusService
 
         $this->orderStatusRepository->delete($orderStatus->id);
     }
-
 }

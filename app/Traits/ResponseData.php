@@ -18,5 +18,4 @@ trait ResponseData
         }
         return response()->json($dataBody, $status);
     }
-
 }

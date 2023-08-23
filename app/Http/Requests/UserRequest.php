@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Contracts\Validation\ValidationRule;
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\ValidationRule;
 
 class UserRequest extends FormRequest
 {
@@ -41,5 +41,4 @@ class UserRequest extends FormRequest
             'is_marketing' => 'boolean',
         ];
     }
-
 }

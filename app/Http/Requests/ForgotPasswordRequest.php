@@ -2,10 +2,9 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Contracts\Validation\ValidationRule;
-use Illuminate\Foundation\Http\FormRequest;
 use OpenApi\Annotations as OA;
-
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\ValidationRule;
 
 /**
  * @OA\Schema(
@@ -18,7 +17,6 @@ use OpenApi\Annotations as OA;
 class ForgotPasswordRequest extends FormRequest
 {
     /**
-     * @var string
      * @OA\Property(property="email", type="string", example="contact@asyncdeveloper.com")
      */
     public string $email;

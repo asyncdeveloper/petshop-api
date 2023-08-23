@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\CreateUserRequest;
-use App\Http\Requests\ForgotPasswordRequest;
-use App\Http\Requests\LoginUserRequest;
-use App\Http\Requests\PasswordResetRequest;
-use App\Http\Requests\UserRequest;
-use App\Services\OrderService;
-use App\Services\UserService;
 use App\Traits\ResponseData;
-use Illuminate\Http\JsonResponse;
+use App\Services\UserService;
+use App\Services\OrderService;
 use OpenApi\Annotations as OA;
+use Illuminate\Http\JsonResponse;
+use App\Http\Requests\UserRequest;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\LoginUserRequest;
+use App\Http\Requests\CreateUserRequest;
+use App\Http\Requests\PasswordResetRequest;
+use App\Http\Requests\ForgotPasswordRequest;
 
 class UserController extends Controller
 {
@@ -62,7 +62,6 @@ class UserController extends Controller
 
         return $this->success($data, 201);
     }
-
 
     /**
      * @OA\Post(
@@ -337,5 +336,4 @@ class UserController extends Controller
 
         return $this->success(null, 204);
     }
-
 }

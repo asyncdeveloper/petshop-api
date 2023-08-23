@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
-use App\Traits\Filterable;
 use App\Traits\UUID;
+use App\Traits\Filterable;
+use OpenApi\Annotations as OA;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use OpenApi\Annotations as OA;
 
 /**
  * @OA\Schema(

@@ -3,11 +3,11 @@
 namespace App\Models;
 
 use App\Traits\UUID;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 use OpenApi\Annotations as OA;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
  * @OA\Schema(
@@ -18,7 +18,6 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
  */
 class User extends Authenticatable implements JWTSubject
 {
-
     /**
      * @OA\Property(property="id", type="string", example="1")
      * @OA\Property(property="uuid", type="string", example="550e8400-e29b-41d4-a716-446655440000")
@@ -45,7 +44,7 @@ class User extends Authenticatable implements JWTSubject
      *
      * @var array<int, string>
      */
-    protected $fillable = [
+    protected array $fillable = [
         'first_name',
         'last_name',
         'email',
@@ -54,7 +53,7 @@ class User extends Authenticatable implements JWTSubject
         'address',
         'phone_number',
         'is_marketing',
-        'last_login_at'
+        'last_login_at',
     ];
 
     /**
@@ -62,7 +61,7 @@ class User extends Authenticatable implements JWTSubject
      *
      * @var array<int, string>
      */
-    protected $hidden = [
+    protected array $hidden = [
         'password',
         'remember_token',
     ];
@@ -88,7 +87,7 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims(): array
     {
         return [
-            'user_uuid' => $this->uuid
+            'user_uuid' => $this->uuid,
         ];
     }
 }

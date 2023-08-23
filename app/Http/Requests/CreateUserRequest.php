@@ -2,10 +2,10 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Contracts\Validation\ValidationRule;
-use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 use OpenApi\Annotations as OA;
+use Illuminate\Validation\Rule;
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\ValidationRule;
 
 /**
  * @OA\Schema(
@@ -18,7 +18,6 @@ use OpenApi\Annotations as OA;
 class CreateUserRequest extends FormRequest
 {
     /**
-     * @var string
      * @OA\Property(property="first_name", type="string", example="Oluwaseyi")
      * @OA\Property(property="last_name", type="string", example="Adeogun")
      * @OA\Property(property="email", type="string", example="contact@asyncdeveloper.com")
@@ -38,7 +37,6 @@ class CreateUserRequest extends FormRequest
     public string $password_confirmation;
 
     /**
-     * @var bool
      * @OA\Property(property="is_admin", type="boolean", example="false")
      * @OA\Property(property="is_marketing", type="boolean", example=false)
      */

@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Contracts\Validation\ValidationRule;
-use Illuminate\Foundation\Http\FormRequest;
 use OpenApi\Annotations as OA;
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\ValidationRule;
 
 /**
  * @OA\Schema(
@@ -16,9 +16,7 @@ use OpenApi\Annotations as OA;
  */
 class LoginUserRequest extends FormRequest
 {
-
     /**
-     * @var string
      * @OA\Property(property="email", type="string", example="contact@asyncdeveloper.com")
      * @OA\Property(property="password", type="string", example="12345678")
      */

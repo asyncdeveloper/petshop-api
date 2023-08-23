@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\OrderStatusRequest;
-use App\Services\OrderStatusService;
 use App\Traits\ResponseData;
-use Illuminate\Http\JsonResponse;
 use OpenApi\Annotations as OA;
+use Illuminate\Http\JsonResponse;
+use App\Http\Controllers\Controller;
+use App\Services\OrderStatusService;
+use App\Http\Requests\OrderStatusRequest;
 
 class OrderStatusController extends Controller
 {
-
     use ResponseData;
 
     private OrderStatusService $orderStatusService;

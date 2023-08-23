@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Contracts\Validation\ValidationRule;
-use Illuminate\Foundation\Http\FormRequest;
 use OpenApi\Annotations as OA;
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\ValidationRule;
 
 /**
  * @OA\Schema(
@@ -17,7 +17,6 @@ use OpenApi\Annotations as OA;
 class OrderStatusRequest extends FormRequest
 {
     /**
-     * @var string
      * @OA\Property(
      *      title="title",
      *      description="title",
@@ -42,7 +41,7 @@ class OrderStatusRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string|unique:order_statuses|max:255'
+            'title' => 'required|string|unique:order_statuses|max:255',
         ];
     }
 }
