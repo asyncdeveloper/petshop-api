@@ -119,19 +119,21 @@ class OrderStatusCRUDTest extends TestCase
         $user = User::first();
         $token = JWTAuth::fromUser($user);
 
+        $orderStatus = OrderStatus::inRandomOrder()->first();
+
         $response = $this->get(
-            route(
-                'find-order-status', ['uuid' => OrderStatus::inRandomOrder()->first()->uuid]
-            ), ['Authorization' => "Bearer {$token}"]
+            route('find-order-status',
+                ['uuid' => $orderStatus->uuid]
+            ),
+            ['Authorization' => "Bearer {$token}"]
         );
 
 
-        $response->assertSuccessful()->assertJsonStructure([
+        $response->assertSuccessful()
+            ->assertJsonStructure([
                 'success',
-                'data' => [
-                    'order_status'
-                ]
-            ])->assertJsonCount(1, 'data');
+                'data'
+            ])->assertJsonFragment($orderStatus->toArray());
     }
 
     /**
