@@ -3,6 +3,7 @@ install:
 	@make setup-env
 	docker compose exec app composer install
 	docker compose exec app php artisan key:generate
+	docker compose exec app php artisan jwt:secret
 	@make migrate
 re-install:
 	@make destroy
