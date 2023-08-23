@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\OrderStatus;
 use Illuminate\Database\Seeder;
 
-class OrderStatus extends Seeder
+class OrderStatusSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,7 +15,7 @@ class OrderStatus extends Seeder
         $statuses = config('constants.order_statuses');
 
         collect($statuses)->each(function ($orderStatus) {
-            \App\Models\OrderStatus::firstOrCreate(['title' => $orderStatus]);
+            OrderStatus::firstOrCreate(['title' => $orderStatus]);
         });
     }
 }
