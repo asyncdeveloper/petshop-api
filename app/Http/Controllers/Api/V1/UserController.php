@@ -8,12 +8,10 @@ use App\Http\Requests\ForgotPasswordRequest;
 use App\Http\Requests\LoginUserRequest;
 use App\Http\Requests\PasswordResetRequest;
 use App\Http\Requests\UserRequest;
-use App\Models\Order;
+use App\Services\OrderService;
 use App\Services\UserService;
 use App\Traits\ResponseData;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
 use OpenApi\Annotations as OA;
 
 class UserController extends Controller
@@ -21,10 +19,12 @@ class UserController extends Controller
     use ResponseData;
 
     private UserService $userService;
+    private OrderService $orderService;
 
-    public function __construct(UserService $userService)
+    public function __construct(UserService $userService, OrderService $orderService)
     {
         $this->userService = $userService;
+        $this->orderService = $orderService;
     }
 
     /**
@@ -289,23 +289,11 @@ class UserController extends Controller
      *      @OA\Response(response=401,description="Unauthorized")
      *  )
      */
-    public function orders(Request $request): JsonResponse
+    public function orders(): JsonResponse
     {
-        $filteredOrder = Order::with(['user', 'orderStatus', 'payment'])
-            ->where('user_id', auth()->user()->id)
-            ->filter();
+        $userOrders = $this->orderService->getUserOrders();
 
-        $paginatedData = $filteredOrder->simplePaginate(
-            (int)$request->limit
-        )->toArray();
-
-        return $this->success(
-            $paginatedData['data'],
-            200,
-            Arr::except($paginatedData, [
-                'data'
-            ])
-        );
+        return $this->success($userOrders['data'], 200, $userOrders['meta']);
     }
 
     /**

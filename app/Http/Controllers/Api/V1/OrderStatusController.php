@@ -122,7 +122,7 @@ class OrderStatusController extends Controller
     {
         $orderStatus = $this->orderStatusService->getOrderStatus($uuid);
 
-        return $this->success($orderStatus->toArray());
+        return $this->success($orderStatus);
     }
 
     /**

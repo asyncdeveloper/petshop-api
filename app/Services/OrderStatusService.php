@@ -33,7 +33,7 @@ class OrderStatusService
         ];
     }
 
-    public function getOrderStatus($uuid): Model
+    public function getOrderStatus($uuid): array
     {
         $orderStatus = $this->orderStatusRepository->find(['uuid' => $uuid])->first();
 
@@ -41,7 +41,7 @@ class OrderStatusService
             throw ValidationException::withMessages(['uuid' => 'Invalid uuid']);
         }
 
-        return $orderStatus;
+        return $orderStatus->toArray();
     }
 
     public function createOrderStatus($data): Model

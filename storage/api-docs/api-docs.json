@@ -550,7 +550,7 @@
                     "User"
                 ],
                 "summary": "Get all user orders",
-                "operationId": "getUserOrder",
+                "operationId": "getUserOrders",
                 "parameters": [
                     {
                         "name": "page",
