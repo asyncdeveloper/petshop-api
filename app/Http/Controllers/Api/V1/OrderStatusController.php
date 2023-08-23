@@ -46,9 +46,9 @@ class OrderStatusController extends Controller
      */
     public function all(): JsonResponse
     {
-        $data = $this->orderStatusService->getAllOrderStatus()->toArray();
+        $data = $this->orderStatusService->getAllOrderStatus();
 
-        return $this->success($data);
+        return $this->success($data['data'], 200, $data['meta']);
     }
 
     /**

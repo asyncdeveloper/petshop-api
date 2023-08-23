@@ -42,8 +42,8 @@ class OrderStatusCRUDTest extends TestCase
                 )
             );
             $response->assertStatus(401)->assertJson([
-                    'error' => 'Token not parsed'
-                ]);
+                'message' => 'Token not parsed'
+            ]);
         }
     }
 
@@ -63,8 +63,8 @@ class OrderStatusCRUDTest extends TestCase
             );
 
             $response->assertStatus(401)->assertJson([
-                    'error' => 'Invalid token'
-                ]);
+                'message' => 'Invalid token'
+            ]);
         }
     }
 
@@ -79,7 +79,7 @@ class OrderStatusCRUDTest extends TestCase
 
         $token = JWTAuth::customClaims(['exp' => now()->addSecond()->timestamp])->fromUser($user);
 
-        sleep(2);
+        sleep(5);
 
         foreach ($this->orderStatusRoutes as $route) {
             $response = $this->get(
@@ -88,7 +88,7 @@ class OrderStatusCRUDTest extends TestCase
                 ), ['Authorization' => "Bearer {$token}"]
             );
 
-            $response->assertStatus(401)->assertJson(['error' => 'Token has Expired']);
+            $response->assertStatus(401)->assertJson(['message' => 'Token has Expired']);
         }
     }
 
