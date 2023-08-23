@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 
-interface CRUDRepositoryInterface
+interface CRUDRepository
 {
     public function query(): Builder;
 

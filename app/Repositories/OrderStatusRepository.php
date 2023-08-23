@@ -3,12 +3,12 @@
 namespace App\Repositories;
 
 use App\Models\OrderStatus;
+use App\Interfaces\CRUDRepository;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
-use App\Interfaces\CRUDRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 
-class OrderStatusRepository implements CRUDRepositoryInterface
+class OrderStatusRepository implements CRUDRepository
 {
     public function findAll(): Collection
     {

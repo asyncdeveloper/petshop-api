@@ -17,7 +17,11 @@ use Illuminate\Contracts\Validation\ValidationRule;
 class PasswordResetRequest extends FormRequest
 {
     /**
-     * @OA\Property(property="token", type="string", example="e1adfed7194b11c9641415b0c937b8b4b8f11a3794907f8ab75d108c94941e79")
+     * @OA\Property(
+     *     property="token",
+     *     type="string",
+     *     example="e1adfed7194b11c9641415b0c937b8b4b8f11a3794907f8ab75d108c94941e79"
+     * )
      * @OA\Property(property="email", type="string", example="contact@asyncdeveloper.com")
      * @OA\Property(property="password", type="string", example="12345678")
      * @OA\Property(property="password_confirmation", type="string", example="12345678")
