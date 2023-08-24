@@ -9,7 +9,13 @@ Converts amount in EUR to a given currency.
 
 ## Installation
 
-Via Composer
+As Standalone
+
+``` bash
+$ composer i
+```
+
+Via Composer into your project
 
 ``` bash
 $ composer require asyncdeveloper/currency-exchange-rate
