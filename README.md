@@ -11,7 +11,7 @@ This project was built with Laravel and MySQL.
 To run the Application, you must install:
 - **Docker** (https://www.docker.com/products/docker-desktop)
 
-Then run this command in project root to setup
+Then run this command in project root - This will install dependencies, migrate and also seed into the database
 ```console
 $ make install
 ```
@@ -21,9 +21,13 @@ You should be able to visit your app at http://localhost:8080
 ### Environment
 An `.env` is auto created from `.env.example` on project install you can change any of the values as needed. 
 
-
 # API documentation:
 ([Link to Swagger Documentation](http://localhost:8080/api/documentation))
+
+Generate swagger docs:
+```console
+$ make generate-docs
+```
 
 ## Testing
 To run tests:
