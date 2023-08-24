@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Asyncdeveloper\CurrencyExchangeRate\Exceptions;
 
 use Illuminate\Validation\ValidationException;

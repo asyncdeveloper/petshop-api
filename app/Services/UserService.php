@@ -44,7 +44,7 @@ class UserService
 
     public function editUser(User|null $user, $attributes): Model
     {
-        if(!$user) {
+        if (!$user) {
             throw new AuthenticationException('Unauthorized');
         }
 

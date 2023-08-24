@@ -2,19 +2,18 @@
 
 namespace Asyncdeveloper\CurrencyExchangeRate\Controllers;
 
+use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Routing\Controller;
+use Asyncdeveloper\CurrencyExchangeRate\Exceptions\NotFound;
 use Asyncdeveloper\CurrencyExchangeRate\CurrencyExchangeRate;
 use Asyncdeveloper\CurrencyExchangeRate\Exceptions\ExchangeRateUnavailable;
-use Asyncdeveloper\CurrencyExchangeRate\Exceptions\NotFoundException;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
 
 class CurrencyExchangeController extends Controller
 {
-
     /**
      * @throws ExchangeRateUnavailable
-     * @throws NotFoundException
+     * @throws NotFound
      */
     public function __invoke(Request $request, CurrencyExchangeRate $converter): JsonResponse
     {
@@ -30,11 +29,10 @@ class CurrencyExchangeController extends Controller
 
         return response()->json([
             'success' => true,
-            'data' =>  [
+            'data' => [
                 'converted_amount' => $convertedAmount,
                 'converted_currency' => $currencyToExchange,
             ],
         ]);
     }
-
 }

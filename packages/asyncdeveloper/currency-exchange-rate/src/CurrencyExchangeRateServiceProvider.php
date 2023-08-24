@@ -8,8 +8,6 @@ class CurrencyExchangeRateServiceProvider extends ServiceProvider
 {
     /**
      * Perform post-registration booting of services.
-     *
-     * @return void
      */
     public function boot(): void
     {
@@ -26,8 +24,6 @@ class CurrencyExchangeRateServiceProvider extends ServiceProvider
 
     /**
      * Register any package services.
-     *
-     * @return void
      */
     public function register(): void
     {
@@ -35,7 +31,7 @@ class CurrencyExchangeRateServiceProvider extends ServiceProvider
 
         // Register the service the package provides.
         $this->app->singleton('currency-exchange-rate', function ($app) {
-            return new CurrencyExchangeRate;
+            return new CurrencyExchangeRate();
         });
     }
 
@@ -44,15 +40,13 @@ class CurrencyExchangeRateServiceProvider extends ServiceProvider
      *
      * @return array
      */
-    public function provides()
+    public function provides(): array
     {
         return ['currency-exchange-rate'];
     }
 
     /**
      * Console-specific booting.
-     *
-     * @return void
      */
     protected function bootForConsole(): void
     {

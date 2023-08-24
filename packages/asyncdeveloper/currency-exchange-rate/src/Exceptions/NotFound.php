@@ -4,7 +4,7 @@ namespace Asyncdeveloper\CurrencyExchangeRate\Exceptions;
 
 use Illuminate\Validation\ValidationException;
 
-class NotFoundException extends ValidationException
+class NotFound extends ValidationException
 {
     public $status = 404;
 }
