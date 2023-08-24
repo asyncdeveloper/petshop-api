@@ -70,6 +70,13 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "repositories": {
+        "asyncdeveloper/currency-exchange-rate": {
+            "type": "path",
+            "url": "/var/www/html/packages/asyncdeveloper/currency-exchange-rate",
+            "options": {
+                "symlink": true
+            }
+        },
         "async-developer/currency-exchange-rate": {
             "type": "path",
             "url": "/var/www/html/packages/async-developer/currency-exchange-rate",

@@ -1,0 +1,41 @@
+{
+    "name": "asyncdeveloper/currency-exchange-rate",
+    "description": "return exchange rate for a given amount in a currency",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Oluwaseyi Adeogun",
+            "email": "contact@asyncdeveloper.com",
+            "homepage": "https://asyncdeveloper.com"
+        }
+    ],
+    "homepage": "https://github.com/asyncdeveloper/currency-exchange-rate",
+    "keywords": ["Laravel", "CurrencyExchangeRate"],
+    "require": {
+        "illuminate/support": "~9"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~9.0",
+        "orchestra/testbench": "~7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Asyncdeveloper\\CurrencyExchangeRate\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Asyncdeveloper\\CurrencyExchangeRate\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Asyncdeveloper\\CurrencyExchangeRate\\CurrencyExchangeRateServiceProvider"
+            ],
+            "aliases": {
+                "CurrencyExchangeRate": "Asyncdeveloper\\CurrencyExchangeRate\\Facades\\CurrencyExchangeRate"
+            }
+        }
+    }
+}
