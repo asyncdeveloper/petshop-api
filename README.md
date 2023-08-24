@@ -59,3 +59,6 @@ $ make up
 $ make down
 $ make migrate
 ```
+
+# Level 3 Challenge: Currency Exchange Rate Package
+folder packages/asyncdeveloper/currency-exchange
