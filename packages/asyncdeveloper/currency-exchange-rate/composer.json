@@ -12,7 +12,7 @@
     "homepage": "https://github.com/asyncdeveloper/currency-exchange-rate",
     "keywords": ["Laravel", "CurrencyExchangeRate"],
     "require": {
-        "illuminate/support": "~9"
+        "illuminate/support": "~6|~7|~8|~9|^10.0"
     },
     "require-dev": {
         "phpunit/phpunit": "~9.0",
