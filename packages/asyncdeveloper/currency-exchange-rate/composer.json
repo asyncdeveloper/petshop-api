@@ -37,5 +37,8 @@
                 "CurrencyExchangeRate": "Asyncdeveloper\\CurrencyExchangeRate\\Facades\\CurrencyExchangeRate"
             }
         }
+    },
+    "scripts": {
+        "test": "phpunit"
     }
 }
