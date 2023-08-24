@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
+        "asyncdeveloper/currency-exchange-rate": "dev-main",
         "darkaonline/l5-swagger": "^8.5",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.10",
@@ -73,13 +74,6 @@
         "asyncdeveloper/currency-exchange-rate": {
             "type": "path",
             "url": "/var/www/html/packages/asyncdeveloper/currency-exchange-rate",
-            "options": {
-                "symlink": true
-            }
-        },
-        "async-developer/currency-exchange-rate": {
-            "type": "path",
-            "url": "/var/www/html/packages/async-developer/currency-exchange-rate",
             "options": {
                 "symlink": true
             }
