@@ -17,6 +17,12 @@ $ composer require asyncdeveloper/currency-exchange-rate
 
 ## Usage
 
+This package exposes an endpoint `(GET) /api/v1/currency-exchange` :
+
+supported parameters:
+-   `amount` - The amount to be converted
+-   `currency` - The currency it is converting to
+
 ## Change log
 
 Please see the [changelog](changelog.md) for more information on what has changed recently.

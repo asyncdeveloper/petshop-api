@@ -62,3 +62,5 @@ $ make migrate
 
 # Level 3 Challenge: Currency Exchange Rate Package
 folder packages/asyncdeveloper/currency-exchange
+
+This package is auto installed as it is already added to `composer.json`
